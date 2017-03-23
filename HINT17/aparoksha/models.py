@@ -77,7 +77,7 @@ class Donations(models.Model):
         db_table = 'tbl_donations'
 
     def __unicode__(self):
-        return self.user_name
+        return self.donation_from
 
     def __str__(self):
-        return self.user_name
+        return self.donation_from
