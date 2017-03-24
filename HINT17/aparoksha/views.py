@@ -79,12 +79,46 @@ def Notifications(request):
         user_email = request.POST.get('user_email', None)
         profile = Users.objects.get(user_email=user_email)
         if profile.user_type == 1:  # User
-            donate = Donations.objects.all().filter(donation_email=user_email)
+            donations = Donations.objects.all().filter(donation_email=user_email)
         else:  # NGO
-            donate = Donations.objects.all().filter(donation_status='Pending')
-        for i in range(len(donate)):
-            donors_pending.append(donate[i].as_dict())
+            donations = Donations.objects.all().filter(donation_status='Pending')
+        for i in range(len(donations)):
+            donors_pending.append(donations[i].as_dict())
         return HttpResponse(json.dumps(donors_pending), content_type="application/json")
+
+
+def donate(request):
+    if request.method == 'POST':
+        donation_type = request.POST.get('type')
+        amount_people = request.POST.get('amount')
+        donation_date = timezone.now()
+        donation_email = request.user.email
+        donation_from = Users.objects.get(user_email=donation_email)
+        donation_desc = request.POST.get('description')
+        if donation_type == 1 and not request.POST.get('to'):
+            ngo_list = []
+            ngos = Users.objects.all().filter(user_ngo_type=1)  # Send NGOs accepting money
+            for i in range(len(ngos)):
+                ngo_list.append(ngos.as_dict())
+            return HttpResponse(json.dumps(ngo_list), content_type="application/json")
+        if donation_type == 1 and request.POST.get('to'):
+            donation_to = request.POST.get('to')
+            new_donate = Donations(type=donation_type, amount_people=amount_people, donation_desc=donation_desc,
+                                   donation_date=donation_date, donation_from=donation_from, donation_to=donation_to,
+                                   donation_email=donation_email)
+            new_donate.save()
+            return HttpResponse(json.dumps({'success': 'False'}), content_type="application/json")
+        elif donation_type == 1 and request.POST.get('to'):
+            new_donate = Donations(type=donation_type, amount_people=amount_people, donation_desc=donation_desc,
+                                   donation_date=donation_date, donation_from=donation_from,
+                                   donation_email=donation_email, )
+            new_donate.save()
+            return HttpResponse(json.dumps({'success': 'False'}), content_type="application/json")
+        return HttpResponse(json.dumps({'success': 'False'}), content_type="application/json")
+
+
+def getrequest(request):
+    return HttpResponse('This is a get request')
 
 
 def renderLogin(request):
