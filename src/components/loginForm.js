@@ -3,6 +3,7 @@ import {
     Button
 } from 'react-native';
 import { connect } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
 import { Card } from './card';
 import { CardSection } from './cardSection';
 import { Input } from './input';
@@ -22,23 +23,24 @@ class LoginForm extends Component {
     }
 
     onButtonPress = () => {
-        fetch('http://172.20.53.17:8080/login', {  
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            firstParam: this.props.email,
-            secondParam: this.props.password,
-          })
-        })
-        .then(response => response.json() )
-        .catch((error) => console.warn("fetch error:", error))
-            //  this.wait(700);
-        .then( jsonData => {
-                console.log(jsonData);
-        });
+        // fetch('http://172.20.53.17:8080/login', {  
+        //   method: 'POST',
+        //   headers: {
+        //     'Accept': 'application/json',
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: JSON.stringify({
+        //     firstParam: this.props.email,
+        //     secondParam: this.props.password,
+        //   })
+        // })
+        // .then(response => response.json() )
+        // .catch((error) => console.warn("fetch error:", error))
+        //     //  this.wait(700);
+        // .then( jsonData => {
+        //         console.log(jsonData);
+        // });
+        Actions.donateNow();
     };
 
     render() {
@@ -69,7 +71,7 @@ class LoginForm extends Component {
                 style={styles.btnStyle}
                 title="Log In"
                 color="#000000"
-                onPress={this.onButtonPress}
+                onPress={() => Actions.donateNow()}
             />
         </CardSection>
     </Card>

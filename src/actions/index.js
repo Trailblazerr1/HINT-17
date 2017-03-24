@@ -1,3 +1,4 @@
+import { Actions } from 'react-native-router-flux';
 import {
  EMAIL_C,
   PASS_C
@@ -16,3 +17,11 @@ export const passChanged = (text) => {
         payload: text
     };
 };
+
+// export const loginUser = (status) => {
+//     return(dispatch) => {
+//         if (status == true) {
+//             console.warn('Action');
+//         }
+//     }
+// };

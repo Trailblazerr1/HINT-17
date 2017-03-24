@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { View, Text } from 'react-native';
 import { createStore } from 'redux';
 import reducers from './reducers';
-import LoginForm from './components/loginForm';
+import Router from './router';
 
 class App extends Component {
     //componentWillMount() {
@@ -13,9 +13,7 @@ class App extends Component {
     render() {
     return (
       <Provider store={createStore(reducers)}>
-          <View>
-            <LoginForm />
-          </View>
+        <Router />
       </Provider>
     );
   }
