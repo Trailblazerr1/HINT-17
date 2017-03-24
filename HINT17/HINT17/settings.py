@@ -25,7 +25,7 @@ SECRET_KEY = '-@_+8prm3ht^!_dfvk#^c#njw556r%ru0!6wh09qy248^w85&l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'aparoksha',
 ]
 
 MIDDLEWARE = [
@@ -75,8 +76,11 @@ WSGI_APPLICATION = 'HINT17.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'hint17',
+        'USER': 'iProject',
+        'PASSWORD': '12345',
+        'PORT': '',
     }
 }
 
