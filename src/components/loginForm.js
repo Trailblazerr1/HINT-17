@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
     Button
 } from 'react-native';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card } from './card';
@@ -23,24 +24,31 @@ class LoginForm extends Component {
     }
 
     onButtonPress = () => {
-        // fetch('http://172.20.53.17:8080/login', {  
+
+        // fetch('http://35.166.45.231:8080/login', {  
         //   method: 'POST',
-        //   headers: {
-        //     'Accept': 'application/json',
+        //  headers: {
+        //     'Accept': '*/*  ',
         //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({
-        //     firstParam: this.props.email,
-        //     secondParam: this.props.password,
-        //   })
+        //     },
+        //     body:"user_email=anurag@anurag.com&password=asdfqwer",
+        //   // body: JSON.stringify({
+        //   //   user_email: 'anurag@anurag.com',
+        //   //   password: 'asdfqwer',
+          
         // })
-        // .then(response => response.json() )
-        // .catch((error) => console.warn("fetch error:", error))
-        //     //  this.wait(700);
-        // .then( jsonData => {
-        //         console.log(jsonData);
-        // });
-        Actions.donateNow();
+        // .then(response => console.log(response))
+        // .catch((error) => console.warn(error))
+        console.log('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password);
+                axios.get('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password)
+                  .then(function (response) {
+                    if (response.data.success == 'True') {
+                        Actions.donateNow();
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
     };
 
     render() {
@@ -71,7 +79,7 @@ class LoginForm extends Component {
                 style={styles.btnStyle}
                 title="Log In"
                 color="#000000"
-                onPress={() => Actions.donateNow()}
+                onPress={this.onButtonPress}
             />
         </CardSection>
     </Card>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 class DonateFormOne extends Component {
     onButtonPress1() {
@@ -17,13 +18,13 @@ class DonateFormOne extends Component {
                 style={styles.moneyStyle} 
                 title="Money"
                 color="#000000"
-                onPress={this.onButtonPress1}
+                onPress={() => Actions.moneyForm()}
             />
             <Button
                 style={styles.kindStyle} 
                 title="Kind"
                 color="#000000"
-                onPress={this.onButtonPress2}
+                onPress={() => Actions.kindForm()}
             />
             </View>
             );

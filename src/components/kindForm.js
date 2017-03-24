@@ -5,7 +5,7 @@ import { CardSection } from './cardSection';
 import { Input } from './input';
 
 
-class moneyForm extends Component {
+class kindForm extends Component {
     onButtonPress1() {
         console.log('Yayy1');
     }
@@ -19,8 +19,8 @@ class moneyForm extends Component {
         <Card>
             <CardSection>
               <Input
-                label="Amount"
-                placeholder="5000"
+                label="Type"
+                placeholder="Clothings, Food, Books"
                 onChangeText={this.onButtonPress1.bind(this)}
               />
             </CardSection>
@@ -33,7 +33,7 @@ class moneyForm extends Component {
 
               />
             </CardSection>
-
+            
             <CardSection>
                 <Button 
                     title="Donate"
@@ -47,4 +47,4 @@ class moneyForm extends Component {
 }
 
 
-export default moneyForm;
+export default kindForm;
