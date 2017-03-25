@@ -1,5 +1,5 @@
 # Helping Hand ( cause everyone needs one )
-It's an android app based on **react native ( Facebook App framework )** _and_ **django as the API backend** . It helps to bring people and NGO's on the same page.
+It's an android app based on react native ( Facebook App framework ) , which helps to bring people and NGO's on the same page.
 Thus bonding them together.
 
 The project helps to tackle the problem of rampant food wastage ongoing in ceremonies and places of
@@ -33,19 +33,17 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 ### Extra Addition ( if time permits )
 1. Rating and Feedback system
 
-<div class="images">
-<div class="imgContainer" style="float:centre;">
-<h3 style = "text-align: center;"> Login or Signup</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=300px; width:200px; > 
-</div>
-
 <div class="imgContainer" style="float:right;">
 <h3 style = "text-align: center;"> Donation Request</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=300px; width:200px; alt="Donation Request">
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width:350px; alt="Donation Request">
+</div>
+
+<div class="imgContainer" style="float:centre;">
+<h3 style = "text-align: center;">Donation Description </h3>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width:350px; > 
 </div>
 
 <div class="imgContainer" style="float:left;">
 <h3 style = "text-align: center; "> User Profile</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=300px; width:200px; alt="User Profile" >
-</div>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width:350px; alt="User Profile" >
 </div>
