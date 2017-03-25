@@ -33,17 +33,10 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 ### Extra Addition ( if time permits )
 1. Rating and Feedback system
 
-<div class="imgContainer">
-<h3 > Donation Request</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=250px; alt="Donation Request">
-</div>
 
-<div class="imgContainer">
-<h3 align="center" >Donation Description </h3>
-<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width=250px;> 
-</div>
+<img align="left" src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=250px; alt="Donation Request">
 
-<div>
-<h3 align="right"> User Profile</h3>
 <img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width=250px; alt="User Profile" >
-</div>
+
+<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width=250px;> 
+
