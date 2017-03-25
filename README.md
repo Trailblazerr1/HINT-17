@@ -1,5 +1,5 @@
 # Helping Hand ( cause everyone needs one )
-It's an android app based on react native ( Facebook App framework ) , which helps to bring people and NGO's on the same page.
+It's an android app based on react native ( Facebook App framework ) and django as the API backend . It helps to bring people and NGO's on the same page.
 Thus bonding them together.
 
 The project helps to tackle the problem of rampant food wastage ongoing in ceremonies and places of
