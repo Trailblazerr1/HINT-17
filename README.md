@@ -34,9 +34,9 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 1. Rating and Feedback system
 
 
-<img align="left" src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=275px; alt="Donation Request">
+<img align="left" src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=280px; alt="Donation Request">
 
-<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width=275px; alt="User Profile" >
+<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width=280px; alt="User Profile" >
 
-<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width=275px;> 
+<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width=280px;> 
 
