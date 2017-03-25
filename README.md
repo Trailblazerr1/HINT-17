@@ -1,5 +1,5 @@
 # Helping Hand ( cause everyone needs one )
-It's an android app based on react native , which helps to bring people and NGO's on the same page.
+It's an android app based on react native ( Facebook App framework ) , which helps to bring people and NGO's on the same page.
 Thus bonding them together.
 
 The project helps to tackle the problem of rampant food wastage ongoing in ceremonies and places of
@@ -10,8 +10,16 @@ The technical end comprises of an android app and a django backend. There would 
 NGO's alike.We would also like to make rating the NGO and feedbacks.
 
 ### Technical Summary
-1. Android App    -- React Native  ( UI )
+1. Android App    -- React Native  ( app backend and UI )
 2. django backend -- All the heavy lifting
+3. NodeJS         -- App server
+
+
+### Node Libraries
+1. axios 
+2. react-native-router-flux
+3. redux
+4. redux-thunk
 
 
 ### What Beholds
@@ -25,21 +33,19 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 ### Extra Addition ( if time permits )
 1. Rating and Feedback system
 
-
+<div class="images">
+<div class="imgContainer" style="float:left">
 <h3 style = "text-align: center;"> Login or Signup</h3>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=300px; width:200px; > 
+</div>
 
-![Login](/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true "Login")
-
-
+<div class="imgContainer" style="float:left">
 <h3 style = "text-align: center;"> Donation Request</h3>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=300px; width:200px; alt="Donation Request">
+</div>
 
-![Donation Request](/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true "Donation Request")
-
-
+<div class="imgContainer" style="float:left">
 <h3 style = "text-align: center;"> User Profile</h3>
-
-![User Profile](/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true "User Profile")
-
-
-
-
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=300px; width:200px; alt="User Profile">
+</div>
+</div>
