@@ -140,10 +140,6 @@ def donate_accept(request):
             return HttpResponse(json.dumps({'success': 'False'}), content_type="application/json")
 
 
-def getrequest(request):
-    return HttpResponse('This is a get request')
-
-
 def renderLogin(request):
     return render(request, 'login.html')
 
@@ -154,3 +150,8 @@ def renderSignup(request):
 
 def renderNotification(request):
     return render(request, 'notification.html')
+
+
+def logout_user(request):
+    logout(request)
+    return HttpResponse(json.dumps({'success': 'True'}), content_type="application/json")
