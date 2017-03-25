@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button } from 'react-native';
+import { View, Text, Button,Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
 class DonateFormOne extends Component {
@@ -14,18 +14,22 @@ class DonateFormOne extends Component {
     render() {
         return (
             <View style={styles.viewStyle} >
-            <Button 
-                style={styles.moneyStyle} 
-                title="Money"
-                color="#000000"
-                onPress={() => Actions.moneyForm()}
-            />
-            <Button
-                style={styles.kindStyle} 
-                title="Kind"
-                color="#000000"
-                onPress={() => Actions.kindForm()}
-            />
+                <Image source={{ uri: 'http://www.refilwe.org/wp-content/uploads/rankingclass.com-charity-donation.jpg' }} style={styles.imgBack}>
+                <View style={styles.btnView}>
+                    <Button 
+                        style={styles.moneyStyle} 
+                        title="Money"
+                        color="#F44336"
+                        onPress={() => Actions.moneyForm()}
+                    />
+                    <Button
+                        style={styles.kindStyle} 
+                        title="Kind"
+                        color="#F44336"
+                        onPress={() => Actions.kindForm()}
+                    />
+                </View>
+                </Image>
             </View>
             );
     }
@@ -33,11 +37,22 @@ class DonateFormOne extends Component {
 
 const styles = {
     viewStyle: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
+        flex: 1,
+        backgroundColor: '#333',
+        justifyContent: 'space-around'
     },
     moneyStyle: {
-                padding: 50
+        height: 100
+
+    },
+    btnView: {
+        justifyContent: 'space-around',
+        flex: 2
+    },
+    imgBack: {
+        flex: 1,
+        padding: 20,
+        opacity: 0.8
     },
     kindStyle: {
             padding: 50

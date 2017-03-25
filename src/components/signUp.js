@@ -11,7 +11,7 @@ import { CardSection } from './cardSection';
 import { Input } from './input';
 import { emailChanged, passChanged } from '../actions';
 
-class LoginForm extends Component {
+class SignUpForm extends Component {
     onEmailChange(text) {
         this.props.emailChanged(text);
     }
@@ -53,6 +53,31 @@ class LoginForm extends Component {
         return (
     <View style={styles.container}>
     <Card>
+            <CardSection>
+          <Input
+            label="First Name"
+            placeholder="Tom"
+            onChangeText={this.onPassChange.bind(this)}
+            value={this.props.password}
+          />
+        </CardSection>
+            <CardSection>
+          <Input
+            label="Last Name"
+            placeholder="Cruise"
+            onChangeText={this.onPassChange.bind(this)}
+            value={this.props.password}
+          />
+        </CardSection>
+        <CardSection>
+          <Input
+            label="User Name"
+            placeholder="Alex"
+            onChangeText={this.onPassChange.bind(this)}
+            value={this.props.password}
+          />
+        </CardSection>
+
         <CardSection>
           <Input
             label="Email"
@@ -64,9 +89,17 @@ class LoginForm extends Component {
 
         <CardSection>
           <Input
-            secureTextEntry
+            label="Type"
+            placeholder="NGO/ Individual"
+            onChangeText={this.onEmailChange.bind(this)}
+            value={this.props.email}
+          />
+        </CardSection>
+
+        <CardSection>
+          <Input
             label="Password"
-            placeholder="password"
+            placeholder="sshhhh!"
             onChangeText={this.onPassChange.bind(this)}
             value={this.props.password}
           />
@@ -75,17 +108,9 @@ class LoginForm extends Component {
 
             <Button 
                 style={styles.btnStyle}
-                title="Log In"
-                color="#841584"
-                onPress={this.onButtonPress}
-            />
-
-            <Button 
-                style={styles.btnStyle}
                 title="Sign Up"
                 color="#F44336"
-                        onPress={() => Actions.signUp()}
-            />
+                        onPress={() => Actions.login()}            />
     </Card>
     </View>
         );
@@ -116,4 +141,4 @@ const mapStateToProps = state => {
     };                                                          
 }; 
 
-export default connect(mapStateToProps, { emailChanged, passChanged })(LoginForm); 
+export default connect(mapStateToProps, { emailChanged, passChanged })(SignUpForm); 
