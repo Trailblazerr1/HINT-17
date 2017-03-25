@@ -33,6 +33,7 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 ### Extra Addition ( if time permits )
 1. Rating and Feedback system
 <br>
+<strong><h4>Screenshots of our app</h4></strong>
 <br>
 <div>
 <img align="left" src="/HINT17/images/Screenshot_2017-03-25-13-29-03-290_com.hint17.png?raw=true" height=450px; width=270px;>
