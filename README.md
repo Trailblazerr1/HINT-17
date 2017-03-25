@@ -26,8 +26,18 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 1. Rating and Feedback system
 
 
-<h3 style = "text-align:center;"> Login or Signup</h3>
+<h3 style = "float:centre"> Login or Signup</h3>
 
-![Alt text](/HINT17/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true "Optional Title")
+![Alt text](/HINT17/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true "Login")
+
+
+<h3 style = "float:centre"> Donation Request</h3>
+
+![Alt text](/HINT17/Screenshot_2017-03-25-10-54-30-756_com.hint17?raw=true "Donation Request")
+
+
+<h3 style = "float:centre"> User Profile</h3>
+
+![Alt text](/HINT17/Screenshot_2017-03-25-10-54-57-710_com.hint17?raw=true "User Profile")
 
 
