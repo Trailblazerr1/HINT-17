@@ -14,7 +14,8 @@ class Users(models.Model):
     user_gender = models.CharField(max_length=1)
     user_pic = models.CharField(max_length=255, blank=True, null=True)
     user_about = models.CharField(max_length=512, blank=True, null=True)
-    user_type = models.IntegerField(null=True)  # 1. User   2. NGO
+    user_type = models.IntegerField(null=True)      # 1. User    2. NGO
+    user_ngo_type = models.IntegerField(null=True)  # 1. Money   2. Kind
 
     class Meta:
         verbose_name = 'Users'
@@ -28,7 +29,6 @@ class Users(models.Model):
 
     def as_dict(self):
         return {
-            "id": self.id,
             "Username": self.user_name,
             "UserPic": self.user_pic,
             "UserMail": self.user_email,
@@ -37,13 +37,23 @@ class Users(models.Model):
 
 
 class Donations(models.Model):
-    type = models.IntegerField()  # 1: Money  2: Food  3: Clothes   4.Books etc
+    donation_id = models.AutoField(primary_key=True)
+    donation_type = models.IntegerField()    # 1: Money  2: Food  3: Clothes   4.Books etc
+    amount_people = models.IntegerField(null=True)
+    donation_desc = models.CharField(max_length=512, null=True, blank=True)
+    donation_to = models.CharField(max_length=255, null=True)
     donation_from = models.CharField(max_length=255, null=False)
-    donation_to = models.CharField(max_length=255, null=False)
     donation_email = models.CharField(max_length=255)
     donation_date = models.DateTimeField()
-    donation_status = models.CharField(max_length=255)  # Pending/Approved
-    user = models.ForeignKey(Users, null=True)
+    donation_status = models.CharField(max_length=255, default='Pending')  # Pending/Approved/Completed
+    # After Confirmation of orders to donor
+    donation_Receiver = models.CharField(max_length=255, null=True)        # Receiver
+    donation_mobile = models.CharField(max_length=255, null=True)          # Receiver's Mobile
+    donation_time = models.DateTimeField(null=True)                        # At what time we are accepting
+    donor_coordinates_lat = models.FloatField(null=True)                   # Latitude  of donor
+    donor_coordinates_lon = models.FloatField(null=True)                   # Longitude of donor
+
+    donating_user = models.ForeignKey(Users, null=True)
 
     class Meta:
         verbose_name = 'Donations'
@@ -57,7 +67,7 @@ class Donations(models.Model):
 
     def as_dict(self):
         return {
-            "type": str(self.type),
+            "type": str(self.donation_type),
             "from": self.donation_from,
             "to": self.donation_to,
             "date": str(self.donation_date),
