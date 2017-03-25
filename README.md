@@ -34,16 +34,16 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 1. Rating and Feedback system
 
 <div class="imgContainer">
-<h3 align="center" > Donation Request</h3>
-<img align="center" src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=300px; alt="Donation Request">
+<h3 > Donation Request</h3>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=450px; width=250px; alt="Donation Request">
 </div>
 
 <div class="imgContainer">
-<p align="right" >Donation Description </p>
-<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width:300px; style="float:centre;"> 
+<h3 align="center" >Donation Description </h3>
+<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=450px; width=250px;> 
 </div>
 
 <div>
-<h3 > User Profile</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width:300px; alt="User Profile" >
+<h3 align="right"> User Profile</h3>
+<img align="right" src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=450px; width=250px; alt="User Profile" >
 </div>
