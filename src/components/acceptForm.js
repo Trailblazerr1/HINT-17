@@ -56,7 +56,6 @@ class acceptForm extends Component {
             label="Receiver"
             placeholder="Abhishek Singhal"
             onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
           />
         </CardSection>
 
@@ -66,7 +65,6 @@ class acceptForm extends Component {
             label="Date and Time"
             placeholder="26/03/2017 19:20"
             onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
           />
         </CardSection>
 

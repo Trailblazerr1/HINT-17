@@ -13,11 +13,9 @@ import { emailChanged, passChanged } from '../actions';
 
 class SignUpForm extends Component {
     onEmailChange(text) {
-        this.props.emailChanged(text);
     }
 
     onPassChange(text) {
-        this.props.passChanged(text);
     }
 
     onButtonPress = () => {
@@ -56,25 +54,23 @@ class SignUpForm extends Component {
             <CardSection>
           <Input
             label="First Name"
-            placeholder="Tom"
+            placeholder="Sherlock"
             onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
           />
         </CardSection>
             <CardSection>
           <Input
             label="Last Name"
-            placeholder="Cruise"
+            placeholder="Holmes"
             onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
           />
         </CardSection>
         <CardSection>
           <Input
             label="User Name"
-            placeholder="Alex"
+            placeholder="BakerBoy"
             onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
+
           />
         </CardSection>
 
@@ -83,7 +79,6 @@ class SignUpForm extends Component {
             label="Email"
             placeholder="email@gmail.com"
             onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
           />
         </CardSection>
 
@@ -92,16 +87,15 @@ class SignUpForm extends Component {
             label="Type"
             placeholder="NGO/ Individual"
             onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
           />
         </CardSection>
 
         <CardSection>
           <Input
+          secureTextEntry
             label="Password"
             placeholder="sshhhh!"
             onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
           />
         </CardSection>
 

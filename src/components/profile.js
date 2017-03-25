@@ -38,13 +38,11 @@ var path ='testimony.txt';
 
     render() {
         return (
-    <View>
+    <View style={styles.vcontainer}>
       <View style={styles.container}>
         <Text style={styles.textStyle1}>
           <Image style={styles.image} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png'}} />
-          <Text style={styles.textStyle2}>
-          Anurag Kushwaha
-          </Text> 
+          <Text style={styles.textStyle2}>        Anurag Kushwaha</Text> 
         </Text>
       </View>
 
@@ -58,8 +56,11 @@ var path ='testimony.txt';
 }
 
 const styles = {
+    vcontainer: {
+        backgroundColor: 'grey'
+    },
   container: {
-    backgroundColor: '#FFC107',
+    backgroundColor: 'black',
     marginTop: 0.1,
     marginHorizontal: 0.1,
   },
@@ -75,7 +76,7 @@ const styles = {
   textStyle2: {
     fontSize: 18,
     padding: 15,
-    marginHorizontal: 35,
+    color: 'white',
     backgroundColor: 'transparent'
   }
 };

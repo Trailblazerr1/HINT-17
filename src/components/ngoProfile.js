@@ -43,13 +43,11 @@ var path ='testimony.txt';
 
     render() {
         return (
-    <View>
+    <View style={styles.vcontainer} >
       <View style={styles.container}>
         <Text style={styles.textStyle1}>
-          <Image style={styles.image} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png'}} />
-          <Text style={styles.textStyle2}>
-          Prayaas, Allahabad Area
-          </Text> 
+          <Image style={styles.image} source={{uri: 'http://www.kec.ac.in/faculty_pics/dummy.png'}} />
+          <Text style={styles.textStyle2}>       Prayaas, Allahabad Area</Text> 
         </Text>
       </View>
 
@@ -63,8 +61,11 @@ var path ='testimony.txt';
 }
 
 const styles = {
+  vcontainer: {
+    backgroundColor: 'black'
+  },
   container: {
-    backgroundColor: '#FFC107',
+    backgroundColor: '#0284ff',
     marginTop: 0.1,
     marginHorizontal: 0.1,
   },
@@ -80,6 +81,7 @@ const styles = {
   textStyle2: {
     fontSize: 18,
     padding: 15,
+    color: 'white',
     marginHorizontal: 35,
     backgroundColor: 'transparent'
   }

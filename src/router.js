@@ -13,14 +13,14 @@ import SignUpForm from './components/signUp';
 const RouterComponent = () => {
     return (
         <Router sceneStyle={{ paddingTop: 55 }}>
-            <Scene key="login" component={LoginForm} title="Login" initial />
-            <Scene key="donateNow" component={DonateFormOne} title="Donate" />
-            <Scene key="moneyForm" component={moneyForm} title="Details" />
-            <Scene key="kindForm" component={kindForm} title="Details" />
-            <Scene key="profile" component={showProfile} title="Your Profile" />
-            <Scene key="nprofile" component={ngoProfile} title="Your Profile" />
-            <Scene key="acceptForm" component={acceptForm} title="Donation details" />
-            <Scene key="nprofile2" component={ngoProfile2} title="Your Profile" />
+            <Scene key="login" component={LoginForm} title="Login" />
+            <Scene key="donateNow" component={DonateFormOne} title="Donate" rightTitle="Logout" onRight={() => Actions.login()} initial />
+            <Scene key="moneyForm" component={moneyForm} title="Details"  rightTitle="Logout" onRight={() => Actions.login()}/>
+            <Scene key="kindForm" component={kindForm} title="Details"  rightTitle="Logout" onRight={() => Actions.login()}/>
+            <Scene key="profile" component={showProfile} title="Your Profile"  rightTitle="Logout" onRight={() => Actions.login()} />
+            <Scene key="nprofile" component={ngoProfile} title="Your Profile" rightTitle="Logout" onRight={() => Actions.login()} />
+            <Scene key="acceptForm" component={acceptForm} title="Donation details"  rightTitle="Logout" onRight={() => Actions.login()} />
+            <Scene key="nprofile2" component={ngoProfile2} title="Your Profile"  rightTitle="Logout" onRight={() => Actions.login()} />
             <Scene key="signUp" component={SignUpForm} title="Sign Up" />
         </Router>
         );
