@@ -1,28 +1,25 @@
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.db import models
 
 
-# Create your models here.
 class Users(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
-    user_Id = models.IntegerField()
     user_name = models.CharField(max_length=25)
     user_fname = models.CharField(max_length=40, blank=True, null=True)
     user_lname = models.CharField(max_length=40, blank=True, null=True)
     user_email = models.CharField(primary_key=True, max_length=60)
-    user_password = models.CharField(max_length=255)
     joining_date = models.DateTimeField()
-    user_dob = models.DateField()
     user_gender = models.CharField(max_length=1)
     user_pic = models.CharField(max_length=255, blank=True, null=True)
     user_about = models.CharField(max_length=512, blank=True, null=True)
+    user_type = models.IntegerField(null=True)      # 1. User    2. NGO
+    user_ngo_type = models.IntegerField(null=True)  # 1. Money   2. Kind
 
     class Meta:
         verbose_name = 'Users'
         verbose_name_plural = 'Users'
-        managed = False
-        db_table = 'tbl_users'
 
     def __unicode__(self):
         return self.user_name
@@ -32,9 +29,47 @@ class Users(models.Model):
 
     def as_dict(self):
         return {
-            "id": self.user_Id,
             "Username": self.user_name,
             "UserPic": self.user_pic,
             "UserMail": self.user_email,
             "About": self.user_about,
+        }
+
+
+class Donations(models.Model):
+    donation_id = models.AutoField(primary_key=True)
+    donation_type = models.IntegerField()    # 1: Money  2: Food  3: Clothes   4.Books etc
+    amount_people = models.IntegerField(null=True)
+    donation_desc = models.CharField(max_length=512, null=True, blank=True)
+    donation_to = models.CharField(max_length=255, null=True)
+    donation_from = models.CharField(max_length=255, null=False)
+    donation_email = models.CharField(max_length=255)
+    donation_date = models.DateTimeField()
+    donation_status = models.CharField(max_length=255, default='Pending')  # Pending/Approved/Completed
+    # After Confirmation of orders to donor
+    donation_Receiver = models.CharField(max_length=255, null=True)        # Receiver
+    donation_mobile = models.CharField(max_length=255, null=True)          # Receiver's Mobile
+    donation_time = models.DateTimeField(null=True)                        # At what time we are accepting
+    donor_coordinates_lat = models.FloatField(null=True)                   # Latitude  of donor
+    donor_coordinates_lon = models.FloatField(null=True)                   # Longitude of donor
+
+    donating_user = models.ForeignKey(Users, null=True)
+
+    class Meta:
+        verbose_name = 'Donations'
+        verbose_name_plural = 'Donations'
+
+    def __unicode__(self):
+        return self.donation_from
+
+    def __str__(self):
+        return self.donation_from
+
+    def as_dict(self):
+        return {
+            "type": str(self.donation_type),
+            "from": self.donation_from,
+            "to": self.donation_to,
+            "date": str(self.donation_date),
+            "status": self.donation_status,
         }
