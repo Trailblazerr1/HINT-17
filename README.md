@@ -34,18 +34,18 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 1. Rating and Feedback system
 
 <div class="images">
-<div class="imgContainer" style="float:left">
+<div class="imgContainer" style="float:centre;">
 <h3 style = "text-align: center;"> Login or Signup</h3>
 <img src="/HINT17/images/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true" height=300px; width:200px; > 
 </div>
 
-<div class="imgContainer" style="float:left">
+<div class="imgContainer" style="float:right;">
 <h3 style = "text-align: center;"> Donation Request</h3>
 <img src="/HINT17/images/Screenshot_2017-03-25-10-54-30-756_com.hint17.png?raw=true" height=300px; width:200px; alt="Donation Request">
 </div>
 
-<div class="imgContainer" style="float:left">
-<h3 style = "text-align: center;"> User Profile</h3>
-<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=300px; width:200px; alt="User Profile">
+<div class="imgContainer" style="float:left;">
+<h3 style = "text-align: center; "> User Profile</h3>
+<img src="/HINT17/images/Screenshot_2017-03-25-10-54-57-710_com.hint17.png?raw=true" height=300px; width:200px; alt="User Profile" >
 </div>
 </div>
