@@ -25,10 +25,9 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 ### Extra Addition ( if time permits )
 1. Rating and Feedback system
 
-<img src = "HINT-17/HINT17/Screenshot_2017-03-25-10-54-47-712_com.hint17.png">
+
+<h3 style = "text-align:center;"> Login or Signup</h3>
 
 ![Alt text](/HINT17/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true "Optional Title")
 
-
-![Login](HINT-17/HINT17/Screenshot_2017-03-25-10-54-47-712_com.hint17.png?raw=true "Login")
 
