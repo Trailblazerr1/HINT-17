@@ -52,7 +52,7 @@ class LoginForm extends Component {
 
     componentDidUpdate() {
         if (this.props.success===true) {
-            Actions.profile();
+            Actions.donateNow();
         }
     }
 

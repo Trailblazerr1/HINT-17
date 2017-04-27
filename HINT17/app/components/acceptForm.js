@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import {
-    Button,
-    View
+    View,
+    Image
 } from 'react-native';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { Card } from './card';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, Thumbnail } from 'native-base';
 import { CardSection } from './cardSection';
-import { Input } from './input';
 import { emailChanged, passChanged } from '../actions';
 
 class acceptForm extends Component {
@@ -49,42 +48,41 @@ class acceptForm extends Component {
 
     render() {
         return (
-    <View style={styles.container}>
-    <Card>
-        <CardSection>
-          <Input
-            label="Receiver"
-            placeholder="Abhishek Singhal"
-            onChangeText={this.onEmailChange.bind(this)}
-          />
-        </CardSection>
+            <Container style={{ flex: 1}}>
+            <Image source={{ uri: 'http://cdn9.staztic.com/app/a/3807/3807627/blur-wallpaper-10-1-s-307x512.jpg' }} style={styles.imgBack}>
+                <Content>
+                <Thumbnail source={{ uri: 'https://cdn2.iconfinder.com/data/icons/rewards-1/512/present-512.png' }} large style={{ marginLeft: 120}}/>
+                    <Form >
+                        <Item style={{ marginTop: 20}} rounded success>
+                            <Input
+                                label="Receiver"
+                                placeholder="    Receiver"
+        
+                            />
+                        </Item>
+                        <Item style={{ marginTop: 20}} rounded  success >
+                            <Input
+                            label="Date n Time"
+                            placeholder="Date n Time"
 
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Date and Time"
-            placeholder="26/03/2017 19:20"
-            onChangeText={this.onPassChange.bind(this)}
-          />
-        </CardSection>
+                             />
+                        </Item>
+                        <Item style={{ marginTop: 20}} rounded  success last >
+                            <Input
+                            label="Phone no."
+                            placeholder="Phone no."
 
-        <CardSection>
-          <Input
-            label="Contact no."
-            placeholder="+91-9876543210"
-            onChangeText={this.onPassChange.bind(this)}
-          />
-        </CardSection>
-
-            <Button 
-                style={styles.btnStyle}
-                title="Accept!"
-                color="#841584"
-                onPress={this.onButtonPress}
-            />
-
-    </Card>
-    </View>
+                             />
+                        </Item>
+                    </Form>
+                    
+                    <Button  onPress={this.onButtonPress.bind(this)}
+                            style={{ marginTop: 20 }}rounded danger block>
+                        <Text style={{ fontSize: 17 }}>Accept</Text>
+                    </Button>
+                </Content>
+                </Image>
+            </Container>
         );
     }
 }
@@ -103,6 +101,11 @@ const styles = {
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center',
+    },
+        imgBack: {
+        flex: 1,
+        padding: 20,
+        justifyContent: 'space-around'
     }
 };
 

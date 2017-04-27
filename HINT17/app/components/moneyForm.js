@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Button, Image } from 'react-native';
+import { Image } from 'react-native';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, Thumbnail } from 'native-base';
 import { Actions } from 'react-native-router-flux';
-import { Card } from './card';
 import { CardSection } from './cardSection';
-import { Input } from './input';
 import { descChanged, typeChanged } from '../actions';
 
 //1 m 2 f c b amount
@@ -33,35 +32,35 @@ class moneyForm extends Component {
     }
 
     render() {
-        return (
-        <Image source={{ uri: 'http://www.refilwe.org/wp-content/uploads/rankingclass.com-charity-donation.jpg' }} style={styles.imgBack}>
-            <Card>
-                <CardSection>
-                  <Input
-                    label="Amount"
-                    placeholder="Rupees 1000"
-                    onChangeText={this.onButtonPress1.bind(this)}
-                    value={this.props.typee}
-                  />
-                </CardSection>
-
-                <CardSection>
-                  <Input
-                    label="Description"
-                    placeholder="For children"
-                    onChangeText={this.onButtonPress2.bind(this)}
-                    value={this.props.descriptionn}
-                  />
-                </CardSection>
-
-            </Card>
-                    <Button 
-                        title="Donate"
-                        color="#F44336"
-                        onPress={this.onButtonPress3.bind(this)}
-                    />
-    </Image>
-            );
+              return (
+            <Container style={{ flex: 1}}>
+            <Image source={{ uri: 'http://cdn9.staztic.com/app/a/3807/3807627/blur-wallpaper-10-1-s-307x512.jpg' }} style={styles.imgBack}>
+                <Content>
+                <Thumbnail source={{ uri: 'https://cdn2.iconfinder.com/data/icons/business-charts/512/earnings-512.png' }} large style={{ marginLeft: 130}}/>
+                    <Form >
+                        <Item style={{ marginTop: 20}} rounded success>
+                            <Input
+                                label="Amount"
+                                placeholder="    Amount"
+        
+                            />
+                        </Item>
+                        <Item style={{ marginTop: 20}} rounded  success >
+                            <Input
+                            label="Description"
+                            placeholder="Description"
+                            />
+                        </Item>
+                    </Form>
+                    
+                    <Button  onPress={this.onButtonPress3.bind(this)}
+                            style={{ marginTop: 20 }}rounded danger block>
+                        <Text style={{ fontSize: 17 }}>Donate</Text>
+                    </Button>
+                </Content>
+                </Image>
+            </Container>
+        );
     }
 }
 

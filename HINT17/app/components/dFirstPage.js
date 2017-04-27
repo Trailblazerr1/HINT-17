@@ -14,16 +14,25 @@ class DonateFormOne extends Component {
 
     render() {
         return (
-<Container>
+            <Container style={{ flex: 1}}>
+            <Image source={{ uri: 'http://cdn9.staztic.com/app/a/3807/3807627/blur-wallpaper-10-1-s-307x512.jpg' }} style={styles.imgBack}>
                 <Content>
-                    <Button light rounded>
-                        <Text>Money</Text>
-                    </Button>
-                   <Button light rounded>
-                    <Thumbnail source={{ uri: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0bf8d937548807.57444c965c84b.jpg' }} />
-                        <Text>Kind</Text>
-                    </Button>
+
+                <Content style={{ marginTop: 50 }}>
+                         <Thumbnail source={{ uri: 'https://cdn2.iconfinder.com/data/icons/business-charts/512/earnings-512.png' }} large style={{ marginLeft: 120}} square size={180}/>
+                        <Button style={{ marginLeft: 120}} light rounded onPress={() => Actions.moneyForm()}>
+                            <Text>Money</Text>
+                        </Button>
+                    </Content>
+                    <Content style={{ marginTop: 140 }}>
+                         <Thumbnail source={{ uri: 'https://cdn2.iconfinder.com/data/icons/rewards-1/512/present-512.png' }} large style={{ marginLeft: 120}} square size={180}/>
+                       <Button style={{ marginLeft: 120}}  light rounded onPress={() => Actions.kindForm()}>
+                            <Text>Kind</Text>
+                        </Button>
+                    </Content>
+                    
                 </Content>
+                </Image>
             </Container>
 
             );
@@ -47,7 +56,8 @@ const styles = {
     imgBack: {
         flex: 1,
         padding: 20,
-        opacity: 0.8
+        opacity: 1,
+        backgroundColor:'transparent'
     },
     kindStyle: {
             padding: 50
