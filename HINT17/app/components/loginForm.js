@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     View
 } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, Thumbnail } from 'native-base';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
@@ -52,36 +52,42 @@ class LoginForm extends Component {
 
     componentDidUpdate() {
         if (this.props.success===true) {
-            Actions.donateNow();
+            Actions.profile();
         }
     }
 
     render() {
         return (
-            <Container style={{ paddingTop: 100}}>
+            <Container style={{ marginTop: 80}}>
                 <Content>
+                <Thumbnail source={{ uri: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0bf8d937548807.57444c965c84b.jpg' }} large style={{ marginLeft: 130}}/>
                     <Form style={{ backgroundColor: 'white'}}>
-                        <Item inlineLabel underline>
-                            <Icon active name='home' />
+                        <Item style={{ marginTop: 20}} rounded danger>
                             <Input
-                             placeholder="Username"
-                             />
+                                label="Email"
+                                placeholder="    Username"
+                                onChangeText={this.onEmailChange.bind(this)}
+                                value={this.props.email}         
+                            />
                         </Item>
-                        <Item style={{ paddingTop: 20}} inlineLabel  last>
+                        <Item style={{ marginTop: 20}} rounded  last >
                             <Input
                             secureTextEntry={true}
                             label="Password"
                             placeholder="Password"
                             onChangeText={this.onPassChange.bind(this)}
+                            value={this.props.password}
                              />
                         </Item>
                     </Form>
                     
-                    <Button  rounded style={{ marginLeft: 130 }}>
-                        <Text>Log In</Text>
+                    <Button  onPress={this.onButtonPress.bind(this)}
+                            style={{ marginTop: 20 }}rounded danger block>
+                        <Text style={{ fontSize: 17 }}>Log In</Text>
                     </Button>
-                   <Button rounded style={{ marginLeft: 130 }}>
-                        <Text>Sign Up</Text>
+                   <Button onPress={() => Actions.signUp()} 
+                   style={{ marginTop: 30}} rounded transparent block>
+                        <Text>Create My Account</Text>
                     </Button>
                 </Content>
             </Container>

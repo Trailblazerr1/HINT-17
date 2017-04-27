@@ -8,14 +8,25 @@ import {
     Image,
     FlatList
 } from 'react-native';
-
+import {
+  Container,
+  Content,
+  CardItem,
+  Body,
+  Card,
+  Left,
+  Right,
+  Thumbnail,
+  H1,
+  H3,
+  Icon,
+  Button,
+  Fab
+} from 'native-base';
 import {
     connect
 } from 'react-redux';
 import axios from 'axios';
-import {
-    Card
-} from './card';
 import {
     CardSection
 } from './cardSection';
@@ -40,9 +51,25 @@ class showProfile extends Component {
 
     renderRow(data) {
         return ( 
-          <Card>
-            <Text>{data.date} </Text> 
-          </Card>
+            <Card style={{ opacity: 0.9 }}>
+                <CardItem  style={{ justifyContent: 'space-between', paddingTop: 1, paddingBottom:1 }}>
+                        <Text>
+                            {data.to}                                     
+                        </Text>
+                      <Button transparent>
+                          <Icon active name="thumbs-up" />
+                          <Text>{data.status}</Text>
+                      </Button>
+                </CardItem>
+                <CardItem content style={{ justifyContent: 'space-between', paddingTop: 1 }}>
+                        <Text>
+                            {data.date}                                    
+                        </Text>
+                        <Text>
+                            5 pm
+                        </Text>
+                </CardItem>
+            </Card>
         );
     }
 
@@ -51,37 +78,48 @@ class showProfile extends Component {
       console.log(this.props.pList);
         if (this.props.pList) {
             return ( 
-              <View 
-                style={
-                    styles.vcontainer
-                }>
+              <Container>
+                <Content>
+                    <Card >
+                        <CardItem style={{ justifyContent: 'space-around' }}>
+                                <Thumbnail source={{ uri: 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png' }} />
+                                <Body style={{ paddingLeft: 35 }}>
+                                    <H3 style={{ padding: 7 }}>
+                                        {this.props.iData.username}
+                                    </H3>
+                                    <Text style={{ padding: 7 }}>
+                                        {this.props.iData.email}
+                                    </Text>
+                                </Body>
+                        </CardItem>
+                    </Card>
 
-                <View 
-                  style={
-                    styles.container
-                } >
-                <Text 
-                  style={
-                    styles.textStyle1
-                } >
-                <Image 
-                  style={
-                    styles.image
-                }
-                source={
-                    {
-                        uri: 'https://upload.wikimedia.org/wikipedia/commons/d/d3/User_Circle.png'
-                    }
-                }
-                /> <Text style = {
-                    styles.textStyle2
-                } > Anurag Kushwaha </Text>  </Text>
-                 </View> 
-
-                <ListView dataSource={this.ds.cloneWithRows(this.props.pList)}
+        
+        <Card style={{ backgroundColor: '#82B1FF' }}>
+        <ListView dataSource={this.ds.cloneWithRows(this.props.iData.previous_donation)}
                 renderRow={this.renderRow.bind(this)}
-                />
-              </View>
+          />
+          </Card>
+              <Fab
+                  active={this.state.active}
+                  direction="right"
+                  containerStyle={{ marginLeft: 10 }}
+                  style={{ backgroundColor: '#5067FF' }}
+                  position="topLeft"
+                  onPress={() => this.setState({ active: !this.state.active })}>
+                  <Icon name="share" />
+                  <Button style={{ backgroundColor: '#34A34F' }}>
+                      <Icon name="logo-whatsapp" />
+                  </Button>
+                  <Button style={{ backgroundColor: '#3B5998' }}>
+                      <Icon name="logo-facebook" />
+                  </Button>
+                  <Button disabled style={{ backgroundColor: '#DD5144' }}>
+                      <Icon name="mail" />
+                  </Button>
+              </Fab>
+          </Content>
+      </Container>
             );
         }
         return ( 
@@ -120,10 +158,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-    //console.log( state.auth);
+    console.log( state.auth);
     return {
         pList: state.auth.pData,
-        email: state.auth.email
+        email: state.auth.email,
+        iData: state.auth.initData
     };
 };
 

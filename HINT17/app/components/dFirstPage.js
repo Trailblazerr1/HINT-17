@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { View, Text, Button,Image } from 'react-native';
+import { View, Image } from 'react-native';
+import { Container, Content, Button, Text, Thumbnail } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 class DonateFormOne extends Component {
@@ -13,24 +14,18 @@ class DonateFormOne extends Component {
 
     render() {
         return (
-            <View style={styles.viewStyle} >
-                <Image source={{ uri: 'http://www.refilwe.org/wp-content/uploads/rankingclass.com-charity-donation.jpg' }} style={styles.imgBack}>
-                <View style={styles.btnView}>
-                    <Button 
-                        style={styles.moneyStyle} 
-                        title="Money"
-                        color="#F44336"
-                        onPress={() => Actions.moneyForm()}
-                    />
-                    <Button
-                        style={styles.kindStyle} 
-                        title="Kind"
-                        color="#F44336"
-                        onPress={() => Actions.kindForm()}
-                    />
-                </View>
-                </Image>
-            </View>
+<Container>
+                <Content>
+                    <Button light rounded>
+                        <Text>Money</Text>
+                    </Button>
+                   <Button light rounded>
+                    <Thumbnail source={{ uri: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0bf8d937548807.57444c965c84b.jpg' }} />
+                        <Text>Kind</Text>
+                    </Button>
+                </Content>
+            </Container>
+
             );
     }
 }
