@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import {
-    Button,
     View
 } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon } from 'native-base';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card } from './card';
 import { CardSection } from './cardSection';
-import { Input } from './input';
-import { emailChanged, passChanged } from '../actions';
+import { emailChanged, passChanged, loginUser } from '../actions';
 
 class LoginForm extends Component {
     onEmailChange(text) {
@@ -20,8 +19,7 @@ class LoginForm extends Component {
         this.props.passChanged(text);
     }
 
-    onButtonPress = () => {
-
+    onButtonPress() {
         // fetch('http://35.166.45.231:8080/login', {  
         //   method: 'POST',
         //  headers: {
@@ -37,57 +35,56 @@ class LoginForm extends Component {
         // .then(response => console.log(response))
         // .catch((error) => console.warn(error))
 
-        axios.get('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password)
-          .then(function (response) {
-            console.log(response);
-            if (response.data.success == 'False') {
-                Actions.donateNow();
-            }
-          })
-          .catch(function (error) {
-                Actions.donateNow();
-          });
-    };
+            // axios.get('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password)
+            //   .then(function (response) {
+            //     console.log(response);
+            //     if (response.data.success == 'False') {
+            //         Actions.donateNow();
+            //     }
+            //   })
+            //   .catch(function (error) {
+            //         Actions.donateNow();
+            //   });
+        const { email, password } = this.props;
+        console.log(email, password);
+        this.props.loginUser({ email, password });
+    }
+
+    componentDidUpdate() {
+        if (this.props.success===true) {
+            Actions.donateNow();
+        }
+    }
 
     render() {
         return (
-    <View style={styles.container}>
-    <Card>
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-            value={this.props.email}
-          />
-        </CardSection>
-
-        <CardSection>
-          <Input
-            secureTextEntry
-            label="Password"
-            placeholder="password"
-            onChangeText={this.onPassChange.bind(this)}
-            value={this.props.password}
-          />
-        </CardSection>
-
-
-            <Button 
-                style={styles.btnStyle}
-                title="Log In"
-                color="#841584"
-                onPress={this.onButtonPress}
-            />
-
-            <Button 
-                style={styles.btnStyle}
-                title="Sign Up"
-                color="#F44336"
-                        onPress={() => Actions.signUp()}
-            />
-    </Card>
-    </View>
+            <Container style={{ paddingTop: 100}}>
+                <Content>
+                    <Form style={{ backgroundColor: 'white'}}>
+                        <Item inlineLabel underline>
+                            <Icon active name='home' />
+                            <Input
+                             placeholder="Username"
+                             />
+                        </Item>
+                        <Item style={{ paddingTop: 20}} inlineLabel  last>
+                            <Input
+                            secureTextEntry={true}
+                            label="Password"
+                            placeholder="Password"
+                            onChangeText={this.onPassChange.bind(this)}
+                             />
+                        </Item>
+                    </Form>
+                    
+                    <Button  rounded style={{ marginLeft: 130 }}>
+                        <Text>Log In</Text>
+                    </Button>
+                   <Button rounded style={{ marginLeft: 130 }}>
+                        <Text>Sign Up</Text>
+                    </Button>
+                </Content>
+            </Container>
         );
     }
 }
@@ -110,10 +107,12 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+    console.log(state.auth);
     return {
         email: state.auth.email,
-        password: state.auth.password
+        password: state.auth.password,
+        success: state.auth.success
     };                                                          
 }; 
 
-export default connect(mapStateToProps, { emailChanged, passChanged })(LoginForm); 
+export default connect(mapStateToProps, { emailChanged, passChanged, loginUser })(LoginForm); 
