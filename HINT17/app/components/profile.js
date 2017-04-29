@@ -36,7 +36,8 @@ import {
     fetchData
 } from '../actions';
 
-
+let comp = 0;
+let pend = 0;
 
 class showProfile extends Component {
 
@@ -47,15 +48,14 @@ class showProfile extends Component {
         });
     }
 
-    componentDidUpdate() {
-      console.log(typeof this.props.pList);
-    }
 
     renderRow(data) {
+      console.log(data.status);
+      if(data.status=="Pending") {
         return ( 
           <ListItem onPress={() => Actions.acceptForm()} >
               <Body>
-                  <Text style={{fontWeight:'bold'}}>Prayaas</Text>
+                  <Text style={{fontWeight:'bold'}}>{data.to}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
                     <Text note>{data.date.split(' ')[0]}</Text>
                     <Text note>{data.date.split(' ')[1].split('.')[0]}</Text>
@@ -64,30 +64,52 @@ class showProfile extends Component {
               <Thumbnail small source={{ uri: 'https://cdn1.iconfinder.com/data/icons/navigation-and-ui-menu/32/negative_pending_neutral_circle_loading-128.png'}} />
           </ListItem>
         );
+      }
+      else {
+                return ( 
+          <ListItem  >
+              <Body>
+                  <Text style={{fontWeight:'bold'}}>{data.to}</Text>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text note>{data.date.split(' ')[0]}</Text>
+                    <Text note>{data.date.split(' ')[1].split('.')[0]}</Text>
+                  </View>
+              </Body>
+              <Thumbnail small source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Icons8_flat_ok.svg/2000px-Icons8_flat_ok.svg.png'}} />
+          </ListItem>
+        );
+      }
     }
 
 
     render() {
-      console.log(this.props.pList);
+      this.props.iData.previous_donation.map(function(single) {
+                    if(single.status=="Pending") {
+                      pend = pend + 1;
+                    }
+                    else {
+                      comp = comp + 1;
+                    }
+                });
         if (this.props.pList) {
             return ( 
               <Container>
                 <Content>
                   <View>
                   <Image source={{ uri: 'https://i.ytimg.com/vi/pbmoEk1PASE/maxresdefault.jpg' }} style={styles.imgBack}>
-                    <Thumbnail source={{ uri: 'http://assets.goodhousekeeping.co.uk/main/embedded/32567/amber-heard__large.jpg?20160718144946' }} bordered large style={{ marginLeft: 120, marginTop: 50}} />
-                    <Text style={{color:'black', fontSize: 24,fontWeight:'bold', marginLeft: 100, marginTop: 10,
-                     fontFamily:'Roboto' }}>Sara Jones</Text>
-                    <Text style={{color:'grey', marginLeft: 110, marginTop: 5,
-                     fontFamily:'Roboto' }}>sara@sara.com</Text>
+                    <Thumbnail source={{ uri: 'http://img11.deviantart.net/e4a2/i/2016/096/f/7/avatar_icon_by_astrolink247-d9xxs6r.jpg' }} bordered large style={{ marginLeft: 120, marginTop: 50}} />
+                    <Text style={{color:'black', fontSize: 24,fontWeight:'bold', marginLeft: 120, marginTop: 10,
+                     fontFamily:'Roboto' }}>{this.props.iData.username}</Text>
+                    <Text style={{color:'grey', marginLeft: 95, marginTop: 5,
+                     fontFamily:'Roboto' }}>{this.props.iData.user_email}</Text>
                        <View style={{ flexDirection: 'row'}}>
                         <View>
                           <Thumbnail source={{ uri: 'https://www.shareicon.net/data/2015/09/24/106380_add_512x512.png' }} bordered style={{ marginLeft: 20, marginTop: 15}} />
-                          <Text style={{color:'black', marginLeft: 40, fontWeight:'bold'}}>4</Text>
+                          <Text style={{color:'black', marginLeft: 40, fontWeight:'bold'}}>{comp/2}</Text>
                         </View>
                         <View>
                           <Thumbnail source={{ uri: 'https://d30y9cdsu7xlg0.cloudfront.net/png/99626-200.png' }} bordered style={{ marginLeft: 180, marginTop: 15}} />
-                          <Text style={{color:'black', marginLeft: 200, fontWeight:'bold'}}>2</Text>
+                          <Text style={{color:'black', marginLeft: 200, fontWeight:'bold'}}>{pend/2}</Text>
                         </View>
                       </View>
                     </Image>
@@ -95,7 +117,7 @@ class showProfile extends Component {
 
                   <View>
                     <List>
-                    <ListView dataSource={this.ds.cloneWithRows(this.props.pList)}
+                    <ListView dataSource={this.ds.cloneWithRows(this.props.iData.previous_donation)}
                             renderRow={this.renderRow.bind(this)}
                       />
                       </List>

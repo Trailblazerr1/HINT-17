@@ -52,7 +52,12 @@ class LoginForm extends Component {
 
     componentDidUpdate() {
         if (this.props.success===true) {
-            Actions.donateNow();
+            if(this.props.user_type==1) {
+                Actions.profile();
+            }
+            else {
+                Actions.nprofile();
+            }
         }
     }
 

@@ -8,15 +8,19 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, Thumbnail } from 'native-base';
 import { CardSection } from './cardSection';
-import { emailChanged, passChanged } from '../actions';
+import { contChanged, dateChanged, recChanged } from '../actions';
 
 class acceptForm extends Component {
-    onEmailChange(text) {
-        this.props.emailChanged(text);
+    onReceiverChange(text) {
+        this.props.recChanged(text);
     }
 
-    onPassChange(text) {
-        this.props.passChanged(text);
+    onDateChange(text) {
+        this.props.dateChanged(text);
+    }
+
+    onContactChange(text) {
+        this.props.contChanged(text);
     }
 
     onButtonPress = () => {
@@ -36,17 +40,17 @@ class acceptForm extends Component {
         // .then(response => console.log(response))
         // .catch((error) => console.warn(error))
 
-        axios.get('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password)
+        axios.get('http://35.166.45.231:8001/donate_accept?donation_id='+this.props.ids+'&donation_reciever='+this.props.receiver+'&time='+this.props.date+'&donation_mobile='+this.props.contact)
           .then(function (response) {
-            console.log(response);
-                Actions.nprofile2();
+                Actions.nprofile();
           })
           .catch(function (error) {
-                Actions.nprofile2();
+                console.log(error);
           });
     };
 
     render() {
+        console.log(this.props.ids);
         return (
             <Container style={{ flex: 1}}>
             <Image source={{ uri: 'http://cdn9.staztic.com/app/a/3807/3807627/blur-wallpaper-10-1-s-307x512.jpg' }} style={styles.imgBack}>
@@ -57,21 +61,24 @@ class acceptForm extends Component {
                             <Input
                                 label="Receiver"
                                 placeholder="    Receiver"
-        
+                                onChangeText={this.onReceiverChange.bind(this)}
+                                value={this.props.receiver}   
                             />
                         </Item>
                         <Item style={{ marginTop: 20}} rounded  success >
                             <Input
-                            label="Date n Time"
-                            placeholder="Date n Time"
-
+                            label="Date and Time"
+                            placeholder="    Date and Time"
+                                onChangeText={this.onDateChange.bind(this)}
+                                value={this.props.date}   
                              />
                         </Item>
                         <Item style={{ marginTop: 20}} rounded  success last >
                             <Input
                             label="Phone no."
                             placeholder="Phone no."
-
+                                onChangeText={this.onContactChange.bind(this)}
+                                value={this.props.contact}   
                              />
                         </Item>
                     </Form>
@@ -111,9 +118,10 @@ const styles = {
 
 const mapStateToProps = state => {
     return {
-        email: state.auth.email,
-        password: state.auth.password
+        contact: state.auth.contact,
+        receiver: state.auth.receiver,
+        date: state.auth.date
     };                                                          
 }; 
 
-export default connect(mapStateToProps, { emailChanged, passChanged })(acceptForm); 
+export default connect(mapStateToProps, { recChanged, dateChanged, contChanged })(acceptForm); 

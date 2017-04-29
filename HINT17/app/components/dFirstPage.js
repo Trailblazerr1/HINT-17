@@ -4,13 +4,6 @@ import { Container, Content, Button, Text, Thumbnail } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 class DonateFormOne extends Component {
-    onButtonPress1() {
-        console.log('Yayy1');
-    }
-
-    onButtonPress2() {
-        console.log('Yayy2');
-    }
 
     render() {
         return (

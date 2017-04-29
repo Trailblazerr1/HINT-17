@@ -7,27 +7,28 @@ import { Actions } from 'react-native-router-flux';
 import { CardSection } from './cardSection';
 import { descChanged, typeChanged } from '../actions';
 
-//1 m 2 f c b amount
+//1 m 2 f 3 b amount
 class kindForm extends Component {
 
-    onButtonPress1(text) {
+
+    onTypeChange(text) {
         this.props.typeChanged(text);
     }
 
-    onButtonPress2(text) {
+    onDesChange(text) {
         this.props.descChanged(text);
     }
 
+
     onButtonPress3() {
-        console.log(this.props.descriptionn);
-        axios.get('http://35.166.45.231:8080/donate?type=2&description=heybaby&amount=68')
+        console.log(this.props.description);
+        axios.get('http://35.166.45.231:8001/donate?donation_type=2&donation_description='+this.props.description+'&donation_amount='+this.props.type)
           .then(function (response) {
                 console.log(response.data.success);
                 Actions.profile();
             })
             .catch(function (error) {
                 console.log(error);
-                Actions.profile();
             });
     }
 
@@ -49,14 +50,16 @@ class kindForm extends Component {
                             <Input
                             label="Description"
                             placeholder="Description"
-
+                            onChangeText={this.onDesChange.bind(this)}
+                            value={this.props.description}
                              />
                         </Item>
                         <Item style={{ marginTop: 20}} rounded  success last >
                             <Input
                             label="Benefactory number"
                             placeholder="Number of beneficiaries"
-
+                                onChangeText={this.onTypeChange.bind(this)}
+                                value={this.props.type}  
                              />
                         </Item>
                     </Form>
@@ -83,8 +86,8 @@ const styles = {
 const mapStateToProps = state => {
      //   console.warn(state.auth);
     return {
-        typee: state.auth.type,
-        descriptionn: state.auth.description
+        type: state.auth.type,
+        description: state.auth.description
     };                                                          
 }; 
 

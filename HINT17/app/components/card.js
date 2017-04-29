@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View } from 'react-native';
+import { Container, Content, Left, Body, Right, ListItem, Thumbnail, Text } from 'native-base';
 
-const Card = (props) => {
-  return (
-    <View style={styles.containerStyle}>
-      {props.children}
-    </View>
-  );
-};
+class SideCard extends Component {
+    render() {
+        return (
+            <Container>
+                <Content>
+                    <ListItem thumbnail>
+                        <Left>
+                            <Thumbnail square size={80} source={{ uri: 'https://cdn1.iconfinder.com/data/icons/navigation-and-ui-menu/32/negative_pending_neutral_circle_loading-128.png'}} />
+                        </Left>
+                        <Body>
+                            <Text>Sankhadeep</Text>
+                            <Text note>Its time to build a difference . .</Text>
+                        </Body>
+                        <Right>
+                            <Button transparent>
+                                <Text>View</Text>
+                            </Button>
+                        </Right>
+                    </ListItem>
+                </Content>
+            </Container>
+        );
+    }
+}
 
 const styles = {
   containerStyle: {
@@ -26,4 +44,4 @@ const styles = {
   }
 };
 
-export { Card };
+export { SideCard };

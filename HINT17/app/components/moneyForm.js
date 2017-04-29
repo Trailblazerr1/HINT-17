@@ -10,24 +10,23 @@ import { descChanged, typeChanged } from '../actions';
 //1 m 2 f c b amount
 class moneyForm extends Component {
 
-    onButtonPress1(text) {
+    onTypeChange(text) {
         this.props.typeChanged(text);
     }
 
-    onButtonPress2(text) {
+    onDesChange(text) {
         this.props.descChanged(text);
     }
 
     onButtonPress3() {
-        console.log(this.props.descriptionn);
-        axios.get('http://35.166.45.231:8080/donate?type=2&description=heybaby&amount=68')
+        console.log(this.props.description);
+        axios.get('http://35.166.45.231:8001/donate?donation_type=1&donation_description='+this.props.description+'&donation_amount='+this.props.type+'&donation_to=cry')
           .then(function (response) {
-                console.log(response.data.success);
+                console.warn(response);
                 Actions.profile();
             })
             .catch(function (error) {
-                console.log(error);
-                Actions.profile();
+                console.warn(error);
             });
     }
 
@@ -41,7 +40,9 @@ class moneyForm extends Component {
                         <Item style={{ marginTop: 20}} rounded success>
                             <Input
                                 label="Amount"
-                                placeholder="    Amount"
+                                placeholder="  Amount"
+                                onChangeText={this.onTypeChange.bind(this)}
+                                value={this.props.type}   
         
                             />
                         </Item>
@@ -49,13 +50,15 @@ class moneyForm extends Component {
                             <Input
                             label="Description"
                             placeholder="Description"
+                            onChangeText={this.onDesChange.bind(this)}
+                            value={this.props.description}
                             />
                         </Item>
                     </Form>
                     
                     <Button  onPress={this.onButtonPress3.bind(this)}
                             style={{ marginTop: 20 }}rounded danger block>
-                        <Text style={{ fontSize: 17 }}>Donate</Text>
+                        <Text style={{ fontSize: 17 }}>Proceed</Text>
                     </Button>
                 </Content>
                 </Image>
@@ -75,8 +78,8 @@ const styles = {
 const mapStateToProps = state => {
      //   console.warn(state.auth);
     return {
-        typee: state.auth.type,
-        descriptionn: state.auth.description
+        type: state.auth.type,
+        description: state.auth.description
     };                                                          
 }; 
 

@@ -1,112 +1,108 @@
 import React, { Component } from 'react';
 import {
-    Button,
     View
 } from 'react-native';
+import { Container, Content, Form, Item, Input, Label, Button, Text, Icon, Thumbnail, Drawer } from 'native-base';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import { Card } from './card';
 import { CardSection } from './cardSection';
-import { Input } from './input';
-import { emailChanged, passChanged } from '../actions';
+import { emailChanged, passChanged, loginUser, typeChanged } from '../actions';
 
-class SignUpForm extends Component {
+class LoginForm extends Component {
     onEmailChange(text) {
+        this.props.emailChanged(text);
     }
 
     onPassChange(text) {
+        this.props.passChanged(text);
     }
 
-    onButtonPress = () => {
+    onTypeChanged(text) {
+        this.props.typeChanged(text);
+    }
 
-        // fetch('http://35.166.45.231:8080/login', {  
-        //   method: 'POST',
-        //  headers: {
-        //     'Accept': '*/*  ',
-        //     'Content-Type': 'application/json',
-        //     },
-        //     body:"user_email=anurag@anurag.com&password=asdfqwer",
-        //   // body: JSON.stringify({
-        //   //   user_email: 'anurag@anurag.com',
-        //   //   password: 'asdfqwer',
-          
-        // })
-        // .then(response => console.log(response))
-        // .catch((error) => console.warn(error))
-
-        axios.get('http://35.166.45.231:8080/login?user_email=' + this.props.email + '&password=' + this.props.password)
+    onButtonPress() {
+        axios.get('http://35.166.45.231:8001/signup?username=asdf&user_email='+this.props.email+'&user_fname=as&user_lname=df&user_gender=m&user_type='+this.props.type+'&user_password='+this.props.password)
           .then(function (response) {
-            console.log(response);
-            if (response.data.success == 'True') {
-                Actions.donateNow();
-            }
+                Actions.login();
           })
           .catch(function (error) {
-                Actions.nprofile();
+                console.log(error);
           });
-    };
+
+    }
+
+    componentDidUpdate() {
+        if (this.props.success===true) {
+                Actions.login();
+            }
+    }
 
     render() {
         return (
-    <View style={styles.container}>
-    <Card>
-            <CardSection>
-          <Input
-            label="First Name"
-            placeholder="Sherlock"
-            onChangeText={this.onPassChange.bind(this)}
-          />
-        </CardSection>
-            <CardSection>
-          <Input
-            label="Last Name"
-            placeholder="Holmes"
-            onChangeText={this.onPassChange.bind(this)}
-          />
-        </CardSection>
-        <CardSection>
-          <Input
-            label="User Name"
-            placeholder="BakerBoy"
-            onChangeText={this.onPassChange.bind(this)}
+            <Container style={{ marginTop: 10}}>
+                <Content>
+                <Thumbnail source={{ uri: 'https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0bf8d937548807.57444c965c84b.jpg' }} large style={{ marginLeft: 130}}/>
+                    <Form>
+                        <Item style={{ marginTop: 20}} rounded danger>
+                            <Input
+                                label="Username"
+                                placeholder="    Username"       
+                        />
+                        </Item>
 
-          />
-        </CardSection>
+                        <Item style={{ marginTop: 20}} rounded danger>
+                            <Input
+                                label="Email"
+                                placeholder="    Username"
+                                onChangeText={this.onEmailChange.bind(this)}
+                                value={this.props.email}         
+                            />
+                        </Item>
 
-        <CardSection>
-          <Input
-            label="Email"
-            placeholder="email@gmail.com"
-            onChangeText={this.onEmailChange.bind(this)}
-          />
-        </CardSection>
+                        <Item style={{ marginTop: 20}} rounded danger>
+                            <Input
+                                label="Name"
+                                placeholder="    First name"         
+                            />
+                        </Item>
 
-        <CardSection>
-          <Input
-            label="Type"
-            placeholder="NGO/ Individual"
-            onChangeText={this.onEmailChange.bind(this)}
-          />
-        </CardSection>
+                        <Item style={{ marginTop: 20}} rounded danger>
+                            <Input
+                                label="Name"
+                                placeholder="    Last name"         
+                            />
+                        </Item>
 
-        <CardSection>
-          <Input
-          secureTextEntry
-            label="Password"
-            placeholder="sshhhh!"
-            onChangeText={this.onPassChange.bind(this)}
-          />
-        </CardSection>
+                         <Item style={{ marginTop: 20}} rounded danger>
+                            <Input
+                                label="Type"
+                                placeholder="    Type" 
+                                onChangeText={this.onTypeChanged.bind(this)}
+                                value={this.props.type}          
+                            />
+                        </Item>
+                        
 
-
-            <Button 
-                style={styles.btnStyle}
-                title="Sign Up"
-                color="#F44336"
-                        onPress={() => Actions.login()}            />
-    </Card>
-    </View>
+                        <Item style={{ marginTop: 20}} rounded  last >
+                            <Input
+                            secureTextEntry={true}
+                            label="Password"
+                            placeholder="Password"
+                            onChangeText={this.onPassChange.bind(this)}
+                            value={this.props.password}
+                             />
+                        </Item>
+                    </Form>
+                    
+                    <Button  onPress={this.onButtonPress.bind(this)}
+                            style={{ marginTop: 20 }}rounded danger block>
+                        <Text style={{ fontSize: 17 }}>Create Account</Text>
+                    </Button>
+                </Content>
+            </Container>
         );
     }
 }
@@ -129,10 +125,13 @@ const styles = {
 };
 
 const mapStateToProps = state => {
+    console.log(state.auth);
     return {
         email: state.auth.email,
-        password: state.auth.password
+        password: state.auth.password,
+        success: state.auth.success,
+        type: state.auth.type
     };                                                          
 }; 
 
-export default connect(mapStateToProps, { emailChanged, passChanged })(SignUpForm); 
+export default connect(mapStateToProps, { emailChanged, passChanged, loginUser, typeChanged })(LoginForm); 
