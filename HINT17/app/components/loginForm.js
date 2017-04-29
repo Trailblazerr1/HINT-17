@@ -51,9 +51,10 @@ class LoginForm extends Component {
     }
 
     componentDidUpdate() {
+        //console.warn(this.props.iData.user_type);
         if (this.props.success===true) {
-            if(this.props.user_type==1) {
-                Actions.profile();
+            if(this.props.iData.user_type==1) {
+                Actions.donateNow();
             }
             else {
                 Actions.nprofile();
@@ -118,11 +119,11 @@ const styles = {
 };
 
 const mapStateToProps = state => {
-    console.log(state.auth);
     return {
         email: state.auth.email,
         password: state.auth.password,
-        success: state.auth.success
+        success: state.auth.success,
+        iData: state.auth.initData
     };                                                          
 }; 
 

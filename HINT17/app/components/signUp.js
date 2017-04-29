@@ -24,12 +24,13 @@ class LoginForm extends Component {
     }
 
     onButtonPress() {
+        console.log(this.props);
         axios.get('http://35.166.45.231:8001/signup?username=asdf&user_email='+this.props.email+'&user_fname=as&user_lname=df&user_gender=m&user_type='+this.props.type+'&user_password='+this.props.password)
           .then(function (response) {
                 Actions.login();
           })
           .catch(function (error) {
-                console.log(error);
+                Actions.login();
           });
 
     }
@@ -56,7 +57,7 @@ class LoginForm extends Component {
                         <Item style={{ marginTop: 20}} rounded danger>
                             <Input
                                 label="Email"
-                                placeholder="    Username"
+                                placeholder="    Email"
                                 onChangeText={this.onEmailChange.bind(this)}
                                 value={this.props.email}         
                             />
@@ -79,7 +80,7 @@ class LoginForm extends Component {
                          <Item style={{ marginTop: 20}} rounded danger>
                             <Input
                                 label="Type"
-                                placeholder="    Type" 
+                                placeholder="    Type (1.User, 2.NGO)" 
                                 onChangeText={this.onTypeChanged.bind(this)}
                                 value={this.props.type}          
                             />

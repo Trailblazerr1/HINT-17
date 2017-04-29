@@ -20,7 +20,7 @@ class moneyForm extends Component {
 
     onButtonPress3() {
         console.log(this.props.description);
-        axios.get('http://35.166.45.231:8001/donate?donation_type=1&donation_description='+this.props.description+'&donation_amount='+this.props.type+'&donation_to=cry')
+        axios.get('http://35.166.45.231:8001/donate?donation_type=1&donation_description='+this.props.description+'&donation_amount='+this.props.type+'&donation_to=udaan')
           .then(function (response) {
                 console.warn(response);
                 Actions.profile();
@@ -54,11 +54,17 @@ class moneyForm extends Component {
                             value={this.props.description}
                             />
                         </Item>
+                        <Item style={{ marginTop: 20}} rounded  success >
+                            <Input
+                            label="NGO"
+                            placeholder="NGO"
+                            />
+                        </Item>
                     </Form>
                     
                     <Button  onPress={this.onButtonPress3.bind(this)}
                             style={{ marginTop: 20 }}rounded danger block>
-                        <Text style={{ fontSize: 17 }}>Proceed</Text>
+                        <Text style={{ fontSize: 17 }}>Donate</Text>
                     </Button>
                 </Content>
                 </Image>

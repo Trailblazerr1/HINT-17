@@ -1,16 +1,16 @@
 import { EMAIL_C, PASS_C, DESC_C, TYPE_C, LOG_SUCCESS, F_DATA, CONT_C, REC_C, DATE_C } from '../actions/types';
 
 const IN_ST = { 
-    email: 'anurag@anurag.com',
-    password: 'asdfqwer',
+    email: '',
+    password: '',
     type: '',
     description: '',
     success: false,
     pData: '',
     initData: '',
-    contact: '9876543210',
-    receiver: 'arun',
-    date: '2018-1-1 11:11:1'
+    contact: '',
+    receiver: '',
+    date: ''
 };
 
 export default (state = IN_ST, action) => {

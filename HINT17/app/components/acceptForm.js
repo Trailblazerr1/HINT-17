@@ -42,7 +42,7 @@ class acceptForm extends Component {
 
         axios.get('http://35.166.45.231:8001/donate_accept?donation_id='+this.props.ids+'&donation_reciever='+this.props.receiver+'&time='+this.props.date+'&donation_mobile='+this.props.contact)
           .then(function (response) {
-                Actions.nprofile();
+                Actions.nprofile3();
           })
           .catch(function (error) {
                 console.log(error);

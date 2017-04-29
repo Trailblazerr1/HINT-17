@@ -41,6 +41,12 @@ let pend = 0;
 
 class showProfile extends Component {
 
+    // calDist({lat, lon}) {
+    //   distance = axios.get('http://maps.google.co.in/distance?lat='+this.props.lan+'&lon='this.props.lon)
+    //   .then(res =>
+    //     distance= res.dist);
+    // }
+
     componentDidMount() {
         this.props.fetchData(this.props.email);
         this.ds = new ListView.DataSource({
@@ -49,11 +55,22 @@ class showProfile extends Component {
     }
 
 
+    // combatConcurrency() {
+    //   if(this.props.clash==true) {
+    //     if(this.props.dist1 < this.props.dist2) {
+    //       this.props.location = this.props.dist1;
+    //     }
+    //   else {
+    //             this.props.location = this.props.dist2;
+    //     }
+    //   }
+    // }
+
     renderRow(data) {
       console.log(data.status);
       if(data.status=="Pending") {
         return ( 
-          <ListItem onPress={() => Actions.acceptForm()} >
+          <ListItem >
               <Body>
                   <Text style={{fontWeight:'bold'}}>{data.to}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
@@ -71,8 +88,12 @@ class showProfile extends Component {
               <Body>
                   <Text style={{fontWeight:'bold'}}>{data.to}</Text>
                   <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
-                    <Text note>{data.date.split(' ')[0]}</Text>
-                    <Text note>{data.date.split(' ')[1].split('.')[0]}</Text>
+                    <Text note>{data.collection_time.split(' ')[0]}</Text>
+                    <Text note>{data.collection_time.split(' ')[1].split('+')[0]}</Text>
+                  </View>
+                  <View style={{ flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <Text note>Contact:{data.donation_mobile}</Text>
+                    <Text note>Receiver:{data.donation_reciever}</Text>
                   </View>
               </Body>
               <Thumbnail small source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Icons8_flat_ok.svg/2000px-Icons8_flat_ok.svg.png'}} />
@@ -117,7 +138,7 @@ class showProfile extends Component {
 
                   <View>
                     <List>
-                    <ListView dataSource={this.ds.cloneWithRows(this.props.iData.previous_donation)}
+                    <ListView dataSource={this.ds.cloneWithRows(this.props.pList)}
                             renderRow={this.renderRow.bind(this)}
                       />
                       </List>
