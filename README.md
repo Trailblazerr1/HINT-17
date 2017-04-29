@@ -49,4 +49,3 @@ NGO's alike.We would also like to make rating the NGO and feedbacks.
 
 <img align="right" src="/HINT17/images/Screenshot_2017-03-25-13-29-03-290_com.hint17.png?raw=true" height=450px; width=270px;>
 </div>
-
